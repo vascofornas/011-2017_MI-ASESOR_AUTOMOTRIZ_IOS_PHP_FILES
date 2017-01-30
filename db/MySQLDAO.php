@@ -29,7 +29,20 @@ class MySQLDAO
         if ($this->conn != null)
             $this->conn->close();
     }
-    
+      public function getNombreAgencia($nombreAgencia)
+    {
+        $returnValue = array();
+        $sql = "select * from tb_agencias where codigo_agencia='" . $nombreAgencia . "'";
+  
+        $result = $this->conn->query($sql);
+        if ($result != null && (mysqli_num_rows($result) >= 1)) {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            if (!empty($row)) {
+                $returnValue = $row;
+            }
+        }
+        return $returnValue;
+    }  
     
       public function getUserDetails($email)
     {

@@ -3,7 +3,7 @@
 require("../db/MySQLDAO.php");
 require("../Classes/EmailConfirmation.php");
 
-$config = parse_ini_file('../../../../SwiftCourse2.ini');
+$config = parse_ini_file('../../../SwiftPhp.ini');
 
 $returnValue = array();
 
