@@ -196,15 +196,15 @@ class MySQLDAO
     }
     
  
-    public function searchFriends($searchWord)
+    public function buscarAsesores($searchWord)
     {
         $returnValue = array();
         
-        $sql = "select * from friends where 1";
+        $sql = "select * from members LEFT JOIN tb_agencias ON members.agencia_usuario = tb_agencias.id_agencia where 1";
        
         if(!empty($searchWord))
         {
-            $sql .= " and ( first_name like ? or last_name like ? )";
+            $sql .= " and ( codigo_agencia like ? or nombre_agencia like ? )";
         }
   
         $statement = $this->conn->prepare($sql);
