@@ -204,7 +204,7 @@ class MySQLDAO
        
         if(!empty($searchWord))
         {
-            $sql .= " and ( codigo_agencia like ? or nombre_agencia like ? )";
+            $sql .= " and ( codigo_agencia like ?  )";
         }
   
         $statement = $this->conn->prepare($sql);
@@ -214,8 +214,8 @@ class MySQLDAO
 
         if(!empty($searchWord))
         {
-          $searchWord = '%' . $searchWord . "%";
-          $statement->bind_param("ss",  $searchWord , $searchWord);
+          $searchWord = '%' ;
+          $statement->bind_param("s",  $searchWord );
         }
         
         $statement->execute();
