@@ -205,6 +205,8 @@ class MySQLDAO
         if(!empty($searchWord))
         {
             $sql .= " and ( codigo_agencia like ?  )";
+              $sql .= " ORDER BY nombre";
+
         }
   
         $statement = $this->conn->prepare($sql);
