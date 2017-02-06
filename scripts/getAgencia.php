@@ -40,7 +40,12 @@ if(!empty($userDetails))
     $returnValue["nombre_agencia"] = $userDetails["nombre_agencia"];
     $returnValue["codigo_agencia"] = $userDetails["codigo_agencia"];
     $returnValue["direccion_agencia"] = $userDetails["direccion_agencia"];
-    $returnValue["id_agencia"] = $userDetails["id_agencia"];
+    $returnValue["financiera"] = $userDetails["financiera"];
+     $returnValue["auxilio_vial_mex"] = $userDetails["auxilio_vial_mex"];
+     $returnValue["auxilio_vial_usa"] = $userDetails["auxilio_vial_usa"];
+    
+    
+
 } else {
     $returnValue["status"]="403";
     $returnValue["message"]="Agencia no encontrada";
