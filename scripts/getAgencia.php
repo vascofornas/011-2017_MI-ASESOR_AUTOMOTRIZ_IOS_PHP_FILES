@@ -44,6 +44,7 @@ if(!empty($userDetails))
      $returnValue["auxilio_vial_mex"] = $userDetails["auxilio_vial_mex"];
      $returnValue["auxilio_vial_usa"] = $userDetails["auxilio_vial_usa"];
      $returnValue["app_store_agencia"] = $userDetails["app_store_agencia"];
+       $returnValue["autos_nuevos"] = $userDetails["autos_nuevos"];
     
     
 

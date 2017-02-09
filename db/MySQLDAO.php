@@ -239,7 +239,7 @@ class MySQLDAO
        
         if(!empty($searchWord))
         {
-            $sql .= " and ( codigo_agencia like ?  )";
+            $sql .= " and ( codigo_agencia = ?)";
               $sql .= " ORDER BY nombre";
 
         }
@@ -249,11 +249,9 @@ class MySQLDAO
         if (!$statement)
             throw new Exception($statement->error);
 
-        if(!empty($searchWord))
-        {
-          $searchWord = '%' ;
-          $statement->bind_param("s",  $searchWord );
-        }
+       if(!empty($searchWord)) {
+  $statement->bind_param("s",  $searchWord );
+}
         
         $statement->execute();
        
