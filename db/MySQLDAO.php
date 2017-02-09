@@ -203,7 +203,7 @@ class MySQLDAO
        
         if(!empty($searchWord))
         {
-            $sql .= " and ( agencia_modelo LIKE ?  )";
+            $sql .= " and ( agencia_modelo = ?  )";
               $sql .= " ORDER BY nombre_modelo";
 
         }
@@ -216,7 +216,80 @@ class MySQLDAO
         if(!empty($searchWord))
         {
            
-          $searchWord = '%' ;
+        
+          $statement->bind_param("s",  $searchWord );
+        }
+       
+        $statement->execute();
+       
+        $result = $statement->get_result();
+        
+         while ($myrow = $result->fetch_assoc()) 
+         {
+           $returnValue[] = $myrow;
+         }
+         
+        return $returnValue;
+    } 
+     
+     public function buscarAnos($searchWord)
+    {
+        $returnValue = array();
+        
+        $sql = "select * from tb_anos  where 1";
+       
+        if(!empty($searchWord))
+        {
+            $sql .= " and ( agencia_ano = ?  )";
+              $sql .= " ORDER BY ano DESC";
+
+        }
+  
+        $statement = $this->conn->prepare($sql);
+
+        if (!$statement)
+            throw new Exception($statement->error);
+
+        if(!empty($searchWord))
+        {
+           
+        
+          $statement->bind_param("s",  $searchWord );
+        }
+       
+        $statement->execute();
+       
+        $result = $statement->get_result();
+        
+         while ($myrow = $result->fetch_assoc()) 
+         {
+           $returnValue[] = $myrow;
+         }
+         
+        return $returnValue;
+    } 
+     public function buscarKms($searchWord)
+    {
+        $returnValue = array();
+        
+        $sql = "select * from tb_km  where 1";
+       
+        if(!empty($searchWord))
+        {
+            $sql .= " and ( agencia_km = ?  )";
+              $sql .= " ORDER BY km";
+
+        }
+  
+        $statement = $this->conn->prepare($sql);
+
+        if (!$statement)
+            throw new Exception($statement->error);
+
+        if(!empty($searchWord))
+        {
+           
+        
           $statement->bind_param("s",  $searchWord );
         }
        
@@ -250,6 +323,7 @@ class MySQLDAO
             throw new Exception($statement->error);
 
        if(!empty($searchWord)) {
+
   $statement->bind_param("s",  $searchWord );
 }
         
