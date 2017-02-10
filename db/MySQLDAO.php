@@ -44,6 +44,45 @@ class MySQLDAO
         return $returnValue;
     }  
     
+
+
+    public function sendEmail($nombreAgencia)
+    {
+
+        //insertar cita en base64_decode
+        //enviar email con la cita al taller
+        //enviar email con la cita al Asesor    public function getNombreAgencia($nombreAgencia)
+    {
+        $returnValue = array();
+        $sql = "select * from tb_agencias where codigo_agencia='" . $nombreAgencia . "'";
+  
+        $result = $this->conn->query($sql);
+        if ($result != null && (mysqli_num_rows($result) >= 1)) {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            if (!empty($row)) {
+                $returnValue = $row;
+            }
+        }
+        return $returnValue;
+    }  
+    
+
+
+        $returnValue = array();
+        $sql = "select * from tb_agencias where codigo_agencia='" . $nombreAgencia . "'";
+  
+        $result = $this->conn->query($sql);
+        if ($result != null && (mysqli_num_rows($result) >= 1)) {
+            $row = $result->fetch_array(MYSQLI_ASSOC);
+            if (!empty($row)) {
+                $returnValue = $row;
+            }
+        }
+        return $returnValue;
+    }  
+    
+
+
       public function getUserDetails($email)
     {
         $returnValue = array();
@@ -231,7 +270,42 @@ class MySQLDAO
          
         return $returnValue;
     } 
-     
+          public function buscarTipos($searchWord)
+    {
+        $returnValue = array();
+        
+        $sql = "select * from tb_otros  where 1";
+       
+        if(!empty($searchWord))
+        {
+            $sql .= " and ( agencia_otros = ?  )";
+              $sql .= " ORDER BY orden_tipo";
+
+        }
+  
+        $statement = $this->conn->prepare($sql);
+
+        if (!$statement)
+            throw new Exception($statement->error);
+
+        if(!empty($searchWord))
+        {
+           
+        
+          $statement->bind_param("s",  $searchWord );
+        }
+       
+        $statement->execute();
+       
+        $result = $statement->get_result();
+        
+         while ($myrow = $result->fetch_assoc()) 
+         {
+           $returnValue[] = $myrow;
+         }
+         
+        return $returnValue;
+    }
      public function buscarAnos($searchWord)
     {
         $returnValue = array();
