@@ -14,7 +14,6 @@ if(empty($_REQUEST["nombre_usuario"]))
 $nombre_usuario = htmlentities($_REQUEST["nombre_usuario"]);
 $email_usuario = htmlentities($_REQUEST["email_usuario"]);
 $tel_usuario = htmlentities($_REQUEST["tel_usuario"]);
-$modelo = htmlentities($_REQUEST[modelo"]);
 $ano = htmlentities($_REQUEST["ano"]);
 $fecha = htmlentities($_REQUEST["fecha"]);
 $hora = htmlentities($_REQUEST["hora"]);
@@ -23,6 +22,8 @@ $tipo = htmlentities($_REQUEST["tipo"]);
 $taller = htmlentities($_REQUEST["taller"]);
 $comentarios = htmlentities($_REQUEST["comentarios"]);
 $emailAsesor = htmlentities($_REQUEST["emailAsesor"]);
+$modelo = htmlentities($_REQUEST["modelo"]);
+$agencia = htmlentities($_REQUEST["agencia"]);
 
 
 
@@ -35,7 +36,7 @@ $dbname = trim($config["dbname"]);
  
 $dao = new MySQLDAO($dbhost, $dbuser, $dbpassword, $dbname);
 $dao->openConnection();
-$userDetails =$dao->sendEmail($nombre_usuario_,$email_usuario,$tel_usuario,$modelo,$ano,$fecha,$hora,$km,$tipo,$taller,$comentarios,$emailAsesor);
+$userDetails =$dao->sendEmail($nombre_usuario,$email_usuario,$tel_usuario,$modelo,$ano,$fecha,$hora,$km,$tipo,$taller,$comentarios,$emailAsesor,$agencia);
 
 if(empty($userDetails))
 {

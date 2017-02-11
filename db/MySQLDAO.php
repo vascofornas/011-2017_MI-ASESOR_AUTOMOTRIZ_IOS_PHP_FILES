@@ -46,15 +46,30 @@ class MySQLDAO
     
 
 
-    public function sendEmail($nombreAgencia)
+    public function sendEmail($nombre_usuario,$email_usuario,$tel_usuario,$modelo,$ano,$fecha,$hora,$km,$tipo,$taller,$comentarios,$emailAsesor,$agencia)
     {
 
-        //insertar cita en base64_decode
+        //insertar cita en base de datos
         //enviar email con la cita al taller
         //enviar email con la cita al Asesor    public function getNombreAgencia($nombreAgencia)
     {
         $returnValue = array();
-        $sql = "select * from tb_agencias where codigo_agencia='" . $nombreAgencia . "'";
+
+$codigo = "123";
+
+
+
+
+        $sql = " INSERT INTO tb_citas_servicio (nombre_cliente, email_cliente, cel_cliente,
+        modelo, ano, kilometros, tipo,
+        fecha, hora, comentarios, codigo, agencia_cita)
+VALUES ('$nombre_usuario', '$email_usuario ','$tel_usuario',' $modelo','$ano','$kilometros', '$tipo',
+'$fecha', 
+'$hora ', 
+'$comentarios', 
+' $codigo ', '
+'$agencia ')";
+       
   
         $result = $this->conn->query($sql);
         if ($result != null && (mysqli_num_rows($result) >= 1)) {
