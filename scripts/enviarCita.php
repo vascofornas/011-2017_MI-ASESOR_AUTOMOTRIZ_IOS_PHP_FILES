@@ -1,21 +1,22 @@
 <?php
 
 
-$nombre_usuario = htmlentities($_REQUEST["nombre_usuario"]);
-$email_usuario = htmlentities($_REQUEST["email_usuario"]);
-$tel_usuario = htmlentities($_REQUEST["tel_usuario"]);
-$modelo = htmlentities($_REQUEST["modelo"]);
-$ano = htmlentities($_REQUEST["ano"]);
+$nombre_usuario = $_POST['a'];
+$email_usuario = $_POST['b'];
+$tel_usuario = $_POST['c'];
+$modelo = $_POST['d'];
+$ano = $_POST['e'];
+
+$km = $_POST['f'];
 $fecha = htmlentities($_REQUEST["fecha"]);
 $hora = htmlentities($_REQUEST["hora"]);
-$km = htmlentities($_REQUEST["km"]);
+
 $tipo = htmlentities($_REQUEST["tipo"]);
 $taller = htmlentities($_REQUEST["taller"]);
 $comentarios = htmlentities($_REQUEST["comentarios"]);
 $emailAsesor = htmlentities($_REQUEST["emailAsesor"]);
 
 
- 
     $host='localhost';
     $user='miasesor_app';
      $db='miasesor_app';
@@ -29,15 +30,15 @@ mysqli_query($link,"INSERT INTO tb_citas_servicio (`nombre_cliente`,`email_clien
 `fecha`,`hora`,
 `comentarios`,`codigo`,
 `agencia_cita`)
-VALUES ('Tip izdelka (6)','Tip izdelka (6)','Tip izdelka (6)',
-'Tip izdelka (6)','Tip izdelka (6)',
-'Tip izdelka (6)','Tip izdelka (6)',
+VALUES ('$nombre_usuario','$email_usuario','$tel_usuario',
+'$modelo','$ano',
+'$km ,'Tip izdelka (6)',
 'Tip izdelka (6)','Tip izdelka (6)',
 'Tip izdelka (6)','Tip izdelka (6)',
 'Tip izdelka (6)')") 
 or die(mysqli_error($link));
    
-
+echo 'Successfully addedlo.'.$km;
 
 
 ?>
