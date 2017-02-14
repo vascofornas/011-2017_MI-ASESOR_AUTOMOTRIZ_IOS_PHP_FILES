@@ -21,6 +21,7 @@ $tramite = $_POST['t'];
 
 
 
+
     $host='localhost';
     $user='miasesor_app';
      $db='miasesor_app';
@@ -29,15 +30,14 @@ $tramite = $_POST['t'];
 $link = mysqli_connect("localhost","miasesor_app","Papa020432","miasesor_app");
 
 mysqli_query($link,"INSERT INTO tb_tramites_online (`nombre_cliente`,`email_cliente`,`cel_cliente`,
-`tramite`,
 
-`comentarios`,`codigo`,
+
+`comentarios`,`codigo`, `tramite`,
 `agencia_tramite`)
 VALUES ('$nombre_usuario','$email_usuario','$tel_usuario',
 
-'$tramite',
 
-'$comentarios','$codigo',
+'$comentarios','$codigo','$tramite',
 '$agencia')") 
 or die(mysqli_error($link));
    
@@ -46,7 +46,7 @@ or die(mysqli_error($link));
 
 
 $to = $email_usuario;
-$subject = '(EMAIL AL CLIENTE) Consulta de trámites online '.$codigo.'  desde la app Mi Asesor Automotriz (iOS)';
+$subject = '(EMAIL AL CLIENTE) Consulta de tramites online '.$codigo.'  desde la app Mi Asesor Automotriz (iOS)';
 $from = 'Mi Asesor Automotriz';
  
 // To send HTML mail, the Content-type header must be set
@@ -66,6 +66,7 @@ $message .= '<p>Cliente: '.$nombre_usuario.'</p>';
 $message .= '<p>Email del Cliente: '.$email_usuario.'</p>';
 $message .= '<p>Teléfono del Cliente: '.$tel_usuario.'</p>';
 
+
 $message .= '<p>Comentarios del cliente: '.$comentarios.'</p>';
 $message .= '<p>Código de la consulta: '.$codigo.'</p>';
 $message .= '<p>Gracias por su confianza. En breve nos pondremos en contacto con usted</p>';
@@ -81,7 +82,7 @@ if(mail($to, $subject, $message, $headers)){
 }
 
 $to = $email_asesor;
-$subject = '(EMAIL AL ASESOR) Consulta de trámites online '.$codigo.' desde la app Mi Asesor Automotriz (iOS)';a
+$subject = '(EMAIL AL ASESOR) Consulta de tramites online '.$codigo.' desde la app Mi Asesor Automotriz (iOS)';
 $from = 'Mi Asesor Automotriz';
  
 // To send HTML mail, the Content-type header must be set
@@ -96,7 +97,7 @@ $headers .= 'From: '.$from."\r\n".
 // Compose a simple HTML email message
 $message = '<html><body>';
 $message .= '<h1 style="color:#f40;">Hola '.$nombre_usuario.'!</h1>';
-$message .= '<p style="color:#080;font-size:18px;">Esto es una CONSULTA DE TRAMITES ONLINE  creada desde la App MI ASESOR AUTOMOTRIZ</p>';
+$message .= '<p style="color:#080;font-size:18px;">Esto es una CONSULTA DE TRAMITES ONLINE creada desde la App MI ASESOR AUTOMOTRIZ</p>';
 $message .= '<p>Cliente: '.$nombre_usuario.'</p>';
 $message .= '<p>Email del Cliente: '.$email_usuario.'</p>';
 $message .= '<p>Teléfono del Cliente: '.$tel_usuario.'</p>';
