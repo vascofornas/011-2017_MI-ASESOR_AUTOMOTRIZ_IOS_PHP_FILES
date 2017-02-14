@@ -321,6 +321,43 @@ VALUES ('$nombre_usuario', '$email_usuario ','$tel_usuario',' $modelo','$ano','$
          
         return $returnValue;
     }
+
+    public function buscarTramites($searchWord)
+    {
+        $returnValue = array();
+        
+        $sql = "select * from tb_tramites  where 1";
+       
+        if(!empty($searchWord))
+        {
+            $sql .= " and ( agencia_tramite = ?  )";
+              $sql .= " ORDER BY orden_tramite";
+
+        }
+  
+        $statement = $this->conn->prepare($sql);
+
+        if (!$statement)
+            throw new Exception($statement->error);
+
+        if(!empty($searchWord))
+        {
+           
+        
+          $statement->bind_param("s",  $searchWord );
+        }
+       
+        $statement->execute();
+       
+        $result = $statement->get_result();
+        
+         while ($myrow = $result->fetch_assoc()) 
+         {
+           $returnValue[] = $myrow;
+         }
+         
+        return $returnValue;
+    }
      public function buscarAnos($searchWord)
     {
         $returnValue = array();
