@@ -50,7 +50,7 @@ if(!empty($userDetails))
        $returnValue["aseguradora_atlas"] = $userDetails["aseguradora_atlas"];
        $returnValue["aseguradora_mapfre"] = $userDetails["aseguradora_mapfre"];
        $returnValue["aseguradora_assistance"] = $userDetails["aseguradora_assistance"];
-       $returnValue["aseguradora_atlas"] = $userDetails["aseguradora_atlas"];
+       $returnValue["aseguradora_qualitas"] = $userDetails["aseguradora_qualitas"];
        $returnValue["aseguradora_gnp"] = $userDetails["aseguradora_gnp"];
     
     
