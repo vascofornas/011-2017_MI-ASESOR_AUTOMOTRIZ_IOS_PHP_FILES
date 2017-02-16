@@ -46,6 +46,12 @@ if(!empty($userDetails))
      $returnValue["app_store_agencia"] = $userDetails["app_store_agencia"];
        $returnValue["autos_nuevos"] = $userDetails["autos_nuevos"];
        $returnValue["email_taller"] = $userDetails["email_taller"];
+       $returnValue["aseguradora_inbursa"] = $userDetails["aseguradora_inbursa"];
+       $returnValue["aseguradora_atlas"] = $userDetails["aseguradora_atlas"];
+       $returnValue["aseguradora_mapfre"] = $userDetails["aseguradora_mapfre"];
+       $returnValue["aseguradora_assistance"] = $userDetails["aseguradora_assistance"];
+       $returnValue["aseguradora_atlas"] = $userDetails["aseguradora_atlas"];
+       $returnValue["aseguradora_gnp"] = $userDetails["aseguradora_gnp"];
     
     
 
